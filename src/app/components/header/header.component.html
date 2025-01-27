@@ -1,0 +1,40 @@
+
+<div class="main"></div>
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <img src="..\assets\book.png" style="width: 60px; height: 40px;" alt="logo" />
+      <span class="title">Bookstore</span>
+    </div>
+    <div class="search-bar">
+      <mat-icon></mat-icon>
+      <img src="assets/search.png" style="width: 20px;height: 20px;">
+      <input matInput placeholder="Search for Books" [(ngModel)]="searchQuery" (input)="filterBooks()" />
+    </div>
+
+    <div class="actions">
+      <button mat-icon-button [matMenuTriggerFor]="menu" (click)="toggleClick()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menu">
+        <div *ngIf="isLoggedIn(); else loggedOut" class="menu">
+          <button mat-menu-item> <span>Hello, {{ username }}</span> </button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+          <hr class="hr" />
+          <div class="bottomMenu">
+            <button mat-button (click)="openOrder()">My Orders</button>
+            <button mat-button (click)="openWishList()">Wishlist</button>
+          </div>
+        </div>
+        <ng-template #loggedOut>
+          <p>Welcome to our store</p>
+          <button mat-menu-item routerLink="/login" class="login">Login / Signup</button>
+        </ng-template>
+      </mat-menu>
+      <button mat-icon-button aria-label="Open shopping cart" (click)="openCart()">
+        <mat-icon matBadge="{{ cartCount }}" matBadgeColor="warn" aria-hidden="true">shopping_cart</mat-icon>
+        <span class="cdk-visually-hidden">Items in cart: {{ cartCount }}</span>
+      </button>  
+    </div>
+  </div>
+</div>

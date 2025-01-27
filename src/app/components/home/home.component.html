@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="cards">
+    <div class="cardSection">
+         <!-- Used ngFor directive to loop through the books -->
+        <div
+        *ngFor="let book of filteredBooks"
+         class="booksCard"
+         (click)="viewBookDetails(book)"   >
+            <div class="image">
+                <img [src]="'assets/book images/' + book.image" alt="{{ book.title }}">
+                <div class="description">{{ book.description }}</div>
+            </div>
+            <div class="content">
+                <span>{{ book.title }}</span>
+            </div>
+            <div class="author">{{ book.author }}</div>
+            <div class="rating">
+            </div>
+            <div class="price">
+            <span>Rs. {{ book.price }}</span>
+            <span id="originalPrice">{{ book.originalPrice }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+

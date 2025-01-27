@@ -1,0 +1,133 @@
+<app-header></app-header>
+<div class="cart-container">
+  <div class="cart-header">
+    <div class="title">My Cart</div>
+    <div class="cart-count">Items: {{ cartCount }}</div>
+  </div>
+
+  <div class="cart-items" *ngIf="cartItems.length > 0; else emptyCart">
+    <div class="cart-item" *ngFor="let item of detailedCartItems">
+      <div class="item-details">
+        <img
+          class="item-image"
+          [src]="'assets/book images/' + item.bookDetails.bookImage"
+          alt="{{ item.title }}"
+        />
+        <div class="item-info">
+          <div class="item-name">{{ item.bookDetails.bookName }}</div>
+          <div class="item-price">
+            Rs.{{ item.totalPrice | number : "1.2-2" }}
+          </div>
+        </div>
+      </div>
+      <div class="quantity-controls">
+        <button (click)="changeQuantity(item.cartId, -1)">-</button>
+        <div class="quantity">{{ item.quantity }}</div>
+        <button (click)="changeQuantity(item.cartId, 1)">+</button>
+      </div>
+      <button class="remove-button" (click)="unCart(item.cartId)">
+        Remove
+      </button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <p>Your cart is empty!</p>
+    </div>
+  </ng-template>
+
+  <div class="form-row">
+    <button
+      class="submit-button custom-button"
+      mat-raised-button
+      (click)="onAddAddress()"
+      *ngIf="cartItems.length > 0 && !isStepperVisible"
+    >
+      Proceed to Order
+    </button>
+  </div>
+
+  <mat-stepper *ngIf="isStepperVisible" linear #stepper>
+    <!-- Address Step -->
+    <mat-step [stepControl]="addressForm">
+      <form [formGroup]="addressForm">
+        <ng-template matStepLabel>Enter Address</ng-template>
+        <!-- Address form fields here -->
+        <mat-form-field appearance="outline">
+          <mat-label>Street Address</mat-label>
+          <textarea
+            matInput
+            formControlName="streetAddress"
+            placeholder="Street address"
+            rows="3"
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" placeholder="City" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput formControlName="state" placeholder="State" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" placeholder="Country" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Pincode</mat-label>
+          <input matInput formControlName="pincode" placeholder="Pincode" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Address Type</mat-label>
+          <mat-select formControlName="addressType">
+            <mat-option *ngFor="let type of addressTypes" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="address">
+          <button mat-button matStepperNext (click)="onSubmitAddress()">
+            Continue
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Order Summary</ng-template>
+      <div>
+        <h3>Your Order Summary</h3>
+
+        <!-- Display Cart Item Details -->
+        <div *ngFor="let item of detailedCartItems">
+          <p>{{ item.bookDetails.bookName }}</p>
+        </div>
+
+        <!-- Display Total Quantity, Total Price, Discount, and Payable Amount -->
+        <div>
+          <p><strong>Total Quantity:</strong> {{ totalQuantity }}</p>
+          <p><strong>Total Price:</strong> Rs.{{ totalPrice }}</p>
+          <p>
+            <strong>Total Payable Amount:</strong> Rs.{{ totalPayableAmount }}
+          </p>
+        </div>
+
+         <!-- Confirm Order Button  -->
+         <div class="placeOrder">
+          <a [routerLink]="['/order-confirm']">
+          <button mat-raised-button (click)="placeOrder()">
+            Confirm Order
+          </button></a>
+        </div> 
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

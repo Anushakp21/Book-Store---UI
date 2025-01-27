@@ -1,0 +1,25 @@
+<div class="container1">
+
+    <div class="container2">
+
+        <form [formGroup]="registerForm" (ngSubmit)="handelLogin()">
+        <h1>BookStore</h1>
+        <h2>LogIn</h2><br><br>    
+        <!-- Email Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Email*" required />
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" placeholder="Password*" required />
+        <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
+        </mat-form-field>
+        <button class="submit"  type="submit">LOGIN</button> 
+        <br><br>
+    <h4 style="margin-left: 70px;">Dont have an account? <a routerLink="/signup">Register</a></h4><br>
+    </form>
+    </div>
+</div>

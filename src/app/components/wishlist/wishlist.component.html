@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="Books">
+  <div class="head" routerLink="/home" >Home</div>
+</div>
+<div class="wishlist">
+  <p>My Wishlist ({{ wishlistCount }})</p>
+</div>
+<div class="MainContainer">
+  <div class="Container" *ngFor="let item of detailedWishlistItems">
+    <!-- Book Image -->
+    <img  class="item-image" [src]="'assets/book images/' + item.bookDetails.bookImage" alt="{{ item.title }}">
+    <!-- Book Details -->
+    <p class="title">{{ item.bookDetails.bookName }}</p>
+    <p class="author">by {{ item.bookDetails.authorName }}</p>
+    <!-- Price Details -->
+    <div class="prices">
+      <span class="originalPrice">Rs {{ item.bookDetails.price }}</span>
+    </div>
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="delete" (click)="removeFromWishlist(item.bookDetails.bookId)">
+        <mat-icon>delete </mat-icon> Remove
+      </button>
+      <button class="add-to-cart" (click)="addToCart(item)">Add to Cart</button>
+    </div>
+  </div>
+</div>

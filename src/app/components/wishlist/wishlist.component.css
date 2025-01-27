@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
+  
+  .Books {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #888;
+  }
+  
+  .wishlist p {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .MainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .Container {
+    background: #fff;
+    width: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .Container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Container img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+  
+  .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .author {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .prices {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .discountedPrice {
+    font-weight: bold;
+    color: #28a745;
+    margin-right: 5px;
+  }
+  
+  .originalPrice {
+    color: black;
+    text:bold;
+    color: #999;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  button {
+    display: flex; /* Make button contents align in a row */
+    align-items: center; /* Vertically center the items */
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    justify-content: center;
+  }
+  
+  button.delete {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  button.add-to-cart {
+    background-color: #26a541;
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .head {
+    font-size: 14px;
+    color: #888;
+    padding-top: 10px;
+  }
+  
+  .head span {
+    color: black;
+    font-weight: bold;
+  }

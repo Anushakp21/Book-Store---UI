@@ -1,0 +1,43 @@
+
+<app-header></app-header>
+<div class="Cards" *ngIf="book">
+    <div class="cardSection">
+      <div class="book"><img [src]="'assets/book images/' + book.image" alt="{{ book.title }}"></div>
+      <div class="tittle">
+        <span>{{ book.title }}</span>
+      </div>
+      <div class="author">
+        <span>by {{ book.author }}</span>
+      </div>
+      <div class="rating">4.5<mat-icon id="star"></mat-icon></div>
+      <div class="peoples"><span>(20)</span></div>
+      <div class="price">
+        <span>Rs.{{ book.originalPrice }}</span
+        ><span id="originalPrice"></span>
+      </div>
+    </div>
+    <div class="line"><hr /></div>
+    <div class="description">
+      <span>Book Description</span><br />
+      <p id="text">
+  
+          {{book.bookDetails}}
+      </p>
+    </div>
+    <div class="OverallRating">
+      
+      <div class="buttons">
+    
+        <button id="notify" *ngIf="!isAddedToCart" (click)="addToCart()">Add To Cart </button>
+        <button id="notify" *ngIf="isAddedToCart" (click)="goToCart()">Go To Cart</button>
+        <!-- Wishlist button, always visible -->
+        <button id="Wishlist" *ngIf="!isAddedToWishlist" (click)="addToWishlist()">
+          <mat-icon></mat-icon>Wishlist
+        </button>
+        <button id="Wishlist" *ngIf="isAddedToWishlist" (click)="goToWishlist()">
+          <mat-icon>favorite</mat-icon>
+          Go To Wishlist
+        </button>
+      </div>
+    </div>
+  </div>

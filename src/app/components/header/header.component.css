@@ -1,0 +1,184 @@
+
+* {
+  box-sizing: border-box;
+}
+.container {
+
+  background: #f4b400;
+  padding: 10px;
+  box-sizing: border-box;
+  
+  max-width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 9200px; /* Center the navbar */
+  width: 100%;
+  margin: 0 auto;
+ 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 150px;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+}
+
+.title {
+  font-size: 38px;
+  color: white;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  flex-grow: 1;
+  max-width: 400px;
+  margin-left: 0px;
+}
+
+.search-bar mat-icon {
+  margin-right: 8px;
+  color: #5f6368;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #3c4043;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions button {
+  color: white;
+  margin-left: 15px;
+}
+
+.actions mat-icon {
+  font-size: 30px;
+}
+
+/* Menu Styles - Making the dropdown larger and more beautiful */
+.menu {
+  min-width: 200px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
+  font-family: 'Roboto', sans-serif;
+}
+
+.menu button {
+  font-size: 16px;
+  padding: 10px;
+  color: #cd0000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: 6px;
+}
+
+.menu button:hover {
+  background-color: #f1f3f4;
+  color: #000;
+}
+
+.menu hr {
+  border: 1px solid #e2e2e2;
+  margin: 10px 0;
+}
+
+/* Additional Styling for the Bottom Menu */
+.bottomMenu button {
+  font-size: 14px;
+  padding: 8px;
+  color: #5f6368;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+}
+
+.bottomMenu button:hover {
+  background-color: #f1f3f4;
+  color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    margin-top: 10px;
+    max-width: 100%;
+  }
+
+  .actions {
+    margin-top: 10px;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .actions button {
+    margin-left: 0;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}
+
+/* Mobile Menu (Hamburger style) */
+@media (max-width: 480px) {
+  .navbar {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+    background-color: #f4b400;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .hamburger-menu.active + .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Keyframes for dropdown animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
